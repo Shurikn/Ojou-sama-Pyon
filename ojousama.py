@@ -16,9 +16,17 @@ async def on_ready():
 @client.event
 async def on_message(message):
     message_text = message.content
+    print(message_text)
     pattern = re.compile(REGEX)
+    i=0
+    already_posted_emoji=[]
     for image_id in re.findall(pattern,message_text):
-        url="https://cdn.discordapp.com/emojis/"+image_id+".png"
-        await client.send_message(message.channel, url)
+        if image_id not in already_posted_emoji:
+            already_posted_emoji.append(image_id)
+            url="https://cdn.discordapp.com/emojis/"+image_id+".png"
+            await client.send_message(message.channel, url)
+            i+=1
+            if i >= 3:
+                break
         
 client.run('TOKEN')
