@@ -23,8 +23,10 @@ async def on_message(message):
     for image_id in re.findall(pattern,message_text):
         if image_id not in already_posted_emoji:
             already_posted_emoji.append(image_id)
-            url="https://cdn.discordapp.com/emojis/"+image_id+".png"
-            await client.send_message(message.channel, url)
+            url = "https://cdn.discordapp.com/emojis/" + image_id + ".png"
+            embed=discord.Embed()
+            embed.set_image(url=url)
+            await client.send_message(message.channel, embed=embed)
             i+=1
             if i >= 3:
                 break
