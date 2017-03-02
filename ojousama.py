@@ -16,7 +16,6 @@ async def on_ready():
 @client.event
 async def on_message(message):
     message_text = message.content
-    print(message_text)
     pattern = re.compile(REGEX)
     i=0
     already_posted_emoji=[]
