@@ -26,7 +26,7 @@ async def on_message(message):
             url = "https://cdn.discordapp.com/emojis/" + image_id + ".png"
             embed=discord.Embed()
             embed.set_image(url=url)
-            await client.send_message(message.channel, embed=embed)
+            await message.channel.send(embed=embed)
             i+=1
             if i >= 3:
                 break
@@ -39,7 +39,7 @@ async def on_message(message):
             url = "https://cdn.discordapp.com/emojis/" + image_id + ".gif"
             embed = discord.Embed()
             embed.set_image(url=url)
-            await client.send_message(message.channel, embed=embed)
+            await message.channel.send(embed=embed)
             i += 1
             if i >= 3:
                 break
